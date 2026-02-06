@@ -1,4 +1,4 @@
-CodeStruct
+**CodeStruct**
 CodeStruct is a comprehensive, unified platform designed to take users from their first line of code to mastering complex Data Structures and Algorithms. By shifting the focus from "grinding" random problems to understanding underlying patterns, CodeStruct provides a systematic roadmap for interview success and language mastery.
 
 🚀 Key Features
