@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* Keep your custom :root and body styles below */
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
@@ -9,6 +8,6 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   background: black;
+  color: white;
 }
