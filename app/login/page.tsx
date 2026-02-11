@@ -1,18 +1,35 @@
 "use client";
 
-import styles from "../register/register.module.css"; // Reusing your sexy styles!
-import { LogIn, Mail, Lock, ArrowRight } from "lucide-react";
+import styles from "../register/register.module.css"; 
+import { LogIn, Mail, Lock, ArrowRight, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link"; // For instant navigation
 
 export default function LoginPage() {
   return (
     <div className={styles.container}>
+      {/* Animated Glow Backdrop */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
         className={styles.glowBackdrop} 
       />
+
+      {/* Direct Home Navigation - Consistent with Register Page */}
+      <Link href="/">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          whileHover={{ x: -5 }}
+          className="fixed top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group"
+        >
+          <ChevronLeft className="w-4 h-4 text-red-600 group-hover:text-red-500 transition-colors" />
+          <span className="text-xl font-black tracking-tighter text-red-600 group-hover:text-red-500 transition-colors uppercase">
+            CodeStruct_
+          </span>
+        </motion.div>
+      </Link>
 
       <div className={styles.contentWrapper}> 
         <motion.div 
@@ -36,7 +53,6 @@ export default function LoginPage() {
               whileHover={{ rotate: -15, scale: 1.1 }}
               className={styles.iconCircle}
             >
-              {/* LogIn icon for visual consistency */}
               <LogIn className="text-red-500 w-8 h-8" />
             </motion.div>
             <h2 className={styles.title}>Login to Account</h2>
@@ -81,7 +97,7 @@ export default function LoginPage() {
           </form>
 
           <p className="text-center mt-6 text-neutral-500 text-sm">
-            New Here? <a href="/register" className="text-red-500 font-bold ml-1 hover:underline">Register</a>
+            New Here? <Link href="/register" className="text-red-500 font-bold ml-1 hover:underline">Register</Link>
           </p>
         </motion.div>
       </div>
