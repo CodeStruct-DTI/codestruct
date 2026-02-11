@@ -19,7 +19,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-black tracking-tighter text-red-600"
           >
-            CODESTRUCT
+            CODESTRUCT_
           </motion.div>
           <div className="flex gap-8 items-center text-sm font-medium text-neutral-400">
             <Link href="/login" className="hover:text-white transition-colors text-xs uppercase tracking-widest">Login</Link>

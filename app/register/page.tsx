@@ -1,8 +1,9 @@
 "use client";
 
 import styles from "./register.module.css";
-import { UserPlus, Mail, Lock, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion"; // Import the magic
+import { UserPlus, Mail, Lock, ArrowRight, ChevronLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import Link from "next/link"; // Required for fast internal navigation
 
 export default function RegisterPage() {
   return (
@@ -14,6 +15,21 @@ export default function RegisterPage() {
         transition={{ duration: 1.5 }}
         className={styles.glowBackdrop} 
       />
+
+      {/* Direct Home Navigation - Top Left */}
+      <Link href="/">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          whileHover={{ x: -5 }}
+          className="fixed top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group"
+        >
+          <ChevronLeft className="w-4 h-4 text-red-600 group-hover:text-red-500 transition-colors" />
+          <span className="text-xl font-black tracking-tighter text-red-600 group-hover:text-red-500 transition-colors uppercase">
+            CodeStruct_
+          </span>
+        </motion.div>
+      </Link>
 
       <div className={styles.contentWrapper}> 
         {/* Animated Intro Section */}
@@ -89,7 +105,7 @@ export default function RegisterPage() {
           </form>
 
           <p className="text-center mt-6 text-neutral-500 text-sm">
-            Already signed in? <a href="/login" className="text-red-500 font-bold ml-1 hover:underline">Login</a>
+            Already signed in? <Link href="/login" className="text-red-500 font-bold ml-1 hover:underline">Login</Link>
           </p>
         </motion.div>
       </div>
