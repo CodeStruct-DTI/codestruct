@@ -10,7 +10,6 @@ export default function LandingPage() {
       {/* Background Ambient Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-red-900/10 blur-[120px] -z-10" />
 
-      {/* Navigation */}
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/60 backdrop-blur-md">
         <nav className="flex justify-between items-center p-6 max-w-7xl mx-auto">
@@ -30,8 +29,8 @@ export default function LandingPage() {
         </nav>
       </header>
 
-      {/* Hero Section */}
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-32 text-center">
+        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,7 +58,7 @@ export default function LandingPage() {
           </div>
         </motion.div>
 
-        {/* The Three Revised Pillars */}
+        {/* Clickable Feature Grid */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,23 +66,26 @@ export default function LandingPage() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="grid md:grid-cols-3 gap-8 mt-32"
         >
-          {/* Pillar 1: Language Roadmaps */}
+          {/* Link to Language Selection (To be built) */}
           <FeatureCard 
             icon={<Code2 className="text-red-500 w-10 h-10" />}
             title="Language Roadmaps"
             desc="Structured paths to master Java, C++, or Python from scratch before diving into DSA."
+            href="/languages" 
           />
-          {/* Pillar 2: DSA Patterns */}
+          {/* Link to DSA Path (To be built) */}
           <FeatureCard 
             icon={<Cpu className="text-red-500 w-10 h-10" />}
             title="Pattern Roadmaps"
             desc="Once you know the syntax, master the logic with visual paths through core DSA patterns."
+            href="/dsa"
           />
-          {/* Pillar 3: Dashboard */}
+          {/* Link to your newly created Unified Dashboard */}
           <FeatureCard 
             icon={<Terminal className="text-red-500 w-10 h-10" />}
             title="Unified Dashboard"
             desc="A centralized view of your progress across LeetCode, Codeforces, and your roadmap goals."
+            href="/unidashboard"
           />
         </motion.div>
       </main>
@@ -91,15 +93,29 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
+/* FeatureCard with Link wrapper and Hover animations */
+function FeatureCard({ icon, title, desc, href }: { icon: React.ReactNode, title: string, desc: string, href: string }) {
   return (
-    <motion.div 
-      whileHover={{ y: -10, borderColor: "rgba(220, 38, 38, 0.5)" }}
-      className="p-8 bg-neutral-950 border border-neutral-900 rounded-2xl text-left transition-colors relative group"
-    >
-      <div className="mb-6 group-hover:scale-110 transition-transform duration-300">{icon}</div>
-      <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">{title}</h3>
-      <p className="text-neutral-500 leading-relaxed text-sm">{desc}</p>
-    </motion.div>
+    <Link href={href} className="block"> {/* Wrapper to make the entire card a link */}
+      <motion.div 
+        whileHover={{ 
+          y: -10, 
+          borderColor: "rgba(220, 38, 38, 0.5)",
+          backgroundColor: "rgba(10, 10, 10, 1)" 
+        }}
+        className="p-8 bg-neutral-950 border border-neutral-900 rounded-2xl text-left transition-all relative group cursor-pointer h-full"
+      >
+        <div className="mb-6 group-hover:scale-110 transition-transform duration-300 flex justify-between items-start">
+          {icon}
+          {/* Subtle indicator that card is clickable */}
+          <ArrowRight className="w-5 h-5 text-neutral-800 group-hover:text-red-500 transition-colors" />
+        </div>
+        <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">{title}</h3>
+        <p className="text-neutral-500 leading-relaxed text-sm group-hover:text-neutral-400 transition-colors">{desc}</p>
+        
+        {/* Decorative glow line at the bottom of the card */}
+        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-red-600 group-hover:w-full transition-all duration-500 rounded-b-2xl" />
+      </motion.div>
+    </Link>
   );
 }
