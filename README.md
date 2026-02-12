@@ -23,19 +23,9 @@ CodeStruct isn't just a tracker; it's a centralized command center for developer
 ---
 
 ## 🚀 Getting Started for the Team
-### 1. Clone & Install
+### Clone & Install
 ```bash
 git clone <your-repo-link>
 cd codestruct
 npm install
 npm run dev
-
-## 📂 Project Structure
-* **`/app`**: Contains our routes (e.g., `/register`, `/login`).
-* **`*.module.css`**: Page-specific classy styling to prevent CSS leakage.
-* **`/public`**: Static assets and branding.
-
-## 🤝 Contribution Guidelines
-* **Styling**: Use the CSS Module pattern for new pages to keep the code clean.
-* **Icons**: Use `lucide-react` for all UI icons.
-* **Branches**: Please create a feature branch (`feat/feature-name`) before merging to `main`.
