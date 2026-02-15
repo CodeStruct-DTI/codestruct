@@ -11,7 +11,7 @@ export default function DashboardPage() {
   const router = useRouter();
   
   // Placeholder Auth State (Toggle this to 'true' to stay on page)
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Change to 'false' to test redirection
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -68,7 +68,6 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <ProfileInput icon={<Code2 />} label="LeetCode ID" placeholder="User Handle" />
           <ProfileInput icon={<Code2 />} label="Codeforces ID" placeholder="User Handle" />
-          <ProfileInput icon={<Code2 />} label="GeeksForGeeks ID" placeholder="User Handle" />
           <ProfileInput icon={<Code2 />} label="CodeChef ID" placeholder="User Handle" />
         </div>
 
