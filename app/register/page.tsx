@@ -18,15 +18,10 @@ export default function RegisterPage() {
 
       {/* Direct Home Navigation - Top Left */}
       <Link href="/">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          whileHover={{ x: -5 }}
-          className="fixed top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group"
-        >
-          <ChevronLeft className="w-4 h-4 text-red-600 group-hover:text-red-500 transition-colors" />
-          <span className="text-xl font-black tracking-tighter text-red-600 group-hover:text-red-500 transition-colors uppercase">
-            CodeStruct_
+        <motion.div className="fixed top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group">
+          <ChevronLeft className="w-4 h-4 text-red-600"/>
+          <span className="text-xl font-black tracking-tighter text-red-600 uppercase">
+            Codestruct_
           </span>
         </motion.div>
       </Link>
