@@ -38,7 +38,7 @@ export default function LandingPage() { // Defines and exports the main componen
         >
           <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 leading-tight"> {/* Large headline: bold, massive scale on desktop, and tight line spacing. */}
             Learn the <span className="text-red-600">Syntax</span>,<br /> {/* Heading text with 'Syntax' highlighted in red and a line break. */}
-            Solve the <span className="text-neutral-500 italic">Problem.</span> {/* Heading text with 'Problem' in grey and italics for emphasis. */}
+            Solve the <span className="text-neutral-500">Problem.</span> {/* Heading text with 'Problem' in grey and italics for emphasis. */}
           </h1>
           <p className="text-neutral-400 text-xl max-w-2xl mx-auto mb-10"> {/* Subheadline: muted grey text, centered, with a limited width for readability. */}
             From your first line of code to mastering complex Data Structures. 
@@ -71,7 +71,7 @@ export default function LandingPage() { // Defines and exports the main componen
             icon={<Code2 className="text-red-500 w-10 h-10" />} // Passes a red Code icon as a prop.
             title="Language Roadmaps" // Passes the card title as a prop.
             desc="Structured paths to master Java, C++, or Python from scratch before diving into DSA." // Passes the description text as a prop.
-            href="/languages" // Sets the destination URL for the card.
+            href="/languageoptions" // Sets the destination URL for the card.
           />
           {/* Link to DSA Path (To be built) */}
           <FeatureCard // Custom card component for the Pattern feature.
@@ -94,7 +94,7 @@ export default function LandingPage() { // Defines and exports the main componen
 }
 
 /* FeatureCard with Link wrapper and Hover animations */
-function FeatureCard({ icon, title, desc, href }: { icon: React.ReactNode, title: string, desc: string, href: string }) { // Defines a reusable card component with specific data types.
+export function FeatureCard({ icon, title, desc, href }: { icon: React.ReactNode, title: string, desc: string, href: string }) { // Defines a reusable card component with specific data types.
   return (
     <Link href={href} className="block"> {/* Wrapper: makes the entire card clickable and navigates to the 'href'. */}
       <motion.div // The animated card container.
