@@ -52,7 +52,7 @@ export default function LandingPage() { // Defines and exports the main componen
                 whileTap={{ scale: 0.95 }} // Click effect: shrinks slightly to feel like a physical press.
                 className="px-8 py-4 bg-red-600 rounded-xl font-bold text-lg flex items-center gap-2" // Button styling: large, red, rounded corners, uses Flexbox for icon alignment.
               >
-                Begin Journey <ArrowRight className="w-5 h-5" /> {/* Button text with a right-facing arrow icon. */}
+                Begin Your Journey <ArrowRight className="w-5 h-5" /> {/* Button text with a right-facing arrow icon. */}
               </motion.button>
             </Link>
           </div>
@@ -77,14 +77,14 @@ export default function LandingPage() { // Defines and exports the main componen
           <FeatureCard // Custom card component for the Pattern feature.
             icon={<Cpu className="text-red-500 w-10 h-10" />} // Passes a red CPU icon as a prop.
             title="Pattern Roadmaps" // Passes the card title.
-            desc="Once you know the syntax, master the logic with visual paths through core DSA patterns." // Passes the description text.
+            desc="Once you know the syntax, master the logic through core DSA patterns." // Passes the description text.
             href="/dsa" // Sets the destination URL.
           />
           {/* Link to your newly created Unified Dashboard */}
           <FeatureCard // Custom card component for the Dashboard feature.
             icon={<Terminal className="text-red-500 w-10 h-10" />} // Passes a red Terminal icon as a prop.
             title="Unified Dashboard" // Passes the card title.
-            desc="A centralized view of your progress across LeetCode, Codeforces, and your roadmap goals." // Passes the description text.
+            desc="A centralized view of your progress across LeetCode, Codeforces etc." // Passes the description text.
             href="/unidashboard" // Sets the destination URL.
           />
         </motion.div>
