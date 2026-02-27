@@ -22,7 +22,7 @@ export default function LandingPage() { // Defines and exports the main componen
           </motion.div>
           <div className="flex gap-8 items-center text-sm font-medium text-neutral-400"> {/* Container for nav links: greyish text, medium weight, and spaced apart. */}
             <Link href="/login" className="hover:text-white transition-colors text-xs uppercase tracking-widest">Login</Link> {/* Link to login page: turns white on hover with a smooth transition. */}
-            <Link href="/register" className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-500 transition-all shadow-[0_0_15px_rgba(220,38,38,0.4)] text-xs font-bold uppercase tracking-tighter"> {/* Link to register: styled as a glowing red button with rounded corners. */}
+            <Link href="/register" className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-500 transition-all"> {/* Link to register: styled as a glowing red button with rounded corners. */}
               Register {/* The button label text. */}
             </Link>
           </div>
@@ -37,8 +37,8 @@ export default function LandingPage() { // Defines and exports the main componen
           transition={{ duration: 0.8 }} // Sets the animation to last 0.8 seconds.
         >
           <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 leading-tight"> {/* Large headline: bold, massive scale on desktop, and tight line spacing. */}
-            Learn the <span className="text-red-600">Syntax</span>,<br /> {/* Heading text with 'Syntax' highlighted in red and a line break. */}
-            Solve the <span className="text-neutral-500">Problem.</span> {/* Heading text with 'Problem' in grey and italics for emphasis. */}
+            Learn the Syntax,<br /> {/* Heading text with 'Syntax' highlighted in red and a line break. */}
+            Solve the Problem. {/* Heading text with 'Problem' in grey and italics for emphasis. */}
           </h1>
           <p className="text-neutral-400 text-xl max-w-2xl mx-auto mb-10"> {/* Subheadline: muted grey text, centered, with a limited width for readability. */}
             From your first line of code to mastering complex Data Structures. 
@@ -83,7 +83,7 @@ export default function LandingPage() { // Defines and exports the main componen
           {/* Link to your newly created Unified Dashboard */}
           <FeatureCard // Custom card component for the Dashboard feature.
             icon={<Terminal className="text-red-500 w-10 h-10" />} // Passes a red Terminal icon as a prop.
-            title="Unified Dashboard" // Passes the card title.
+            title="Coding Profiles" // Passes the card title.
             desc="A centralized view of your progress across LeetCode, Codeforces etc." // Passes the description text.
             href="/unidashboard" // Sets the destination URL.
           />
