@@ -45,21 +45,21 @@ export default function LanguageOptionPage() {
                         icon={<OfficialLogo src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++" />}
                         title="C++(Recommended)"
                         desc="The gold standard for Competitive Programming. Master STL, memory management, and high-speed execution."
-                        href="/roadmap/cpp"
+                        href="/langroadmap/cpp"
                     />
                     
                     <FeatureCard 
                         icon={<OfficialLogo src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" />}
                         title="Java(Recommended)"
                         desc="The backbone of enterprise software. Master OOPs, the Collections Framework, and robust system design."
-                        href="/roadmap/java"
+                        href="/langroadmap/java"
                     />
                     
                     <FeatureCard 
                         icon={<OfficialLogo src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" />}
                         title="Python"
                         desc="Rapid prototyping and clean syntax. Focus on algorithmic logic with powerful built-in data structures."
-                        href="/roadmap/python"
+                        href="/langroadmap/python"
                     />
                 </div>
             </main>

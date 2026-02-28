@@ -112,9 +112,6 @@ export function FeatureCard({ icon, title, desc, href }: { icon: React.ReactNode
         </div>
         <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">{title}</h3> {/* Card title: large, bold, and all-caps. */}
         <p className="text-neutral-500 leading-relaxed text-sm group-hover:text-neutral-400 transition-colors">{desc}</p> {/* Card description: muted grey text that brightens slightly on hover. */}
-        
-        {/* Decorative glow line at the bottom of the card */}
-        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-red-600 group-hover:w-full transition-all duration-500 rounded-b-2xl" /> {/* Visual flair: a red line that grows from 0% to 100% width on hover. */}
       </motion.div>
     </Link>
   );
