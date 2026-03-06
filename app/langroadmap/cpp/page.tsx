@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Code2, Terminal, Cpu, Zap, ChevronLeft, ArrowRight } from "lucide-react";
+import ActivityHeatmap from "@/components/ui/ActivityHeatmap";
 
 export default function CppRoadmap() {
   const steps = [
@@ -83,6 +84,9 @@ export default function CppRoadmap() {
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
             C++ <span className="text-red-600">ROADMAP_</span>
           </h1>
+          <section className="mb-7">
+            <ActivityHeatmap storageKey="cpp-activity" />
+          </section>
           <p className="text-neutral-400 text-lg max-w-2xl leading-relaxed">
             The gold standard for Competitive Programming. This structured path takes you from 
             basic syntax to mastering the Standard Template Library (STL).
