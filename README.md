@@ -30,5 +30,19 @@ cd codestruct
 code .
 npm install
 npm run dev
+```
+### To view currently how it is
+First sync your forked repo to the main branch of org's repo, then:
+```bash
+git pull
+npm install
+npm run dev
+```
 
-
+### Make changes & commit
+```bash
+git pull
+git add .
+git commit -m "commit-msg"
+git push origin main
+```

@@ -76,7 +76,7 @@ export default function LandingPage() { // Defines and exports the main componen
           {/* Link to DSA Path (To be built) */}
           <FeatureCard // Custom card component for the Pattern feature.
             icon={<Cpu className="text-red-500 w-10 h-10" />} // Passes a red CPU icon as a prop.
-            title="Pattern Roadmaps" // Passes the card title.
+            title="DSA Patterns + Company Specific Questions" // Passes the card title.
             desc="Once you know the syntax, master the logic through core DSA patterns." // Passes the description text.
             href="/dsa" // Sets the destination URL.
           />
