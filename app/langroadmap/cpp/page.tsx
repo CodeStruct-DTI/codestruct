@@ -9,6 +9,7 @@ export default function CppRoadmap() {
   const steps = [
     {
       title: "Phase 1: Basics & Foundation",
+      phase: "phase1",
       icon: <Terminal className="w-6 h-6 text-red-500" />,
       items: [
         { label: "Variables & Data Types", slug: "variables" },
@@ -19,6 +20,7 @@ export default function CppRoadmap() {
     },
     {
       title: "Phase 2: Functional Logic",
+      phase: "phase2",
       icon: <Code2 className="w-6 h-6 text-red-500" />,
       items: [
         { label: "Functions & Parameters", slug: "functions" },
@@ -29,6 +31,7 @@ export default function CppRoadmap() {
     },
     {
       title: "Phase 3: Standard Template Library(STL)",
+      phase: "phase3",
       icon: <Zap className="w-6 h-6 text-red-500" />,
       items: [
         { label: "Vectors & Iterators", slug: "vectors" },
@@ -39,6 +42,7 @@ export default function CppRoadmap() {
     },
     {
       title: "Phase 4: Advanced Concepts",
+      phase: "phase4",
       icon: <Cpu className="w-6 h-6 text-red-500" />,
       items: [
         { label: "Object Oriented Programming", slug: "oop" },
@@ -91,11 +95,11 @@ export default function CppRoadmap() {
             The gold standard for Competitive Programming. This structured path takes you from 
             basic syntax to mastering the Standard Template Library (STL).
           </p>
-          <a href="/langroadmap/cpp/variables">
+          <Link href="/langroadmap/cpp/phase1/variables">
             <button className="mt-8 px-8 py-3 bg-red-600 rounded-full font-bold cursor-pointer hover:scale-105 transition-transform">
               Start Your Journey
             </button>
-          </a>
+          </Link>
         </motion.div>
 
         {/* Roadmap Timeline */}
@@ -124,7 +128,7 @@ export default function CppRoadmap() {
                 {step.items.map((item, i) => (
                   <Link 
                     key={i} 
-                    href={`/langroadmap/cpp/${item.slug}`}
+                    href={`/langroadmap/cpp/${step.phase}/${item.slug}`}
                     className="p-4 bg-neutral-950 border border-neutral-900 rounded-xl text-neutral-400 hover:text-white hover:border-red-900/50 transition-all cursor-pointer group/item flex justify-between items-center"
                   >
                     <span className="font-medium">{item.label}</span>
