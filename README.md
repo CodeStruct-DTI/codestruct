@@ -32,10 +32,9 @@ code .
 npm install
 npm run dev
 ```
-### To view currently how it is
-First sync your forked repo to the main branch of org's repo, then:
+### To view currently how it is(if repo file already exists in your system)
+REMEMBER: SYNC YOUR CURRENT REPO TO UPTO DATE IF YOUR REPO SAYS "1 commit behind"etc. Make sure you open and see the latest changes, then:
 ```bash
-git pull
 npm install
 npm run dev
 ```

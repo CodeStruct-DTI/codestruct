@@ -152,7 +152,7 @@ export default function InputOutput() {
                 <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-neutral-800 pt-10">
                 
                 {/* Previous Lesson Button */}
-                <Link href="/langroadmap/cpp/variables">
+                <Link href="/langroadmap/cpp/phase1/variables">
                     <motion.div
                     whileHover={{ x: -5 }}
                     whileTap={{ scale: 0.95 }}
@@ -171,7 +171,7 @@ export default function InputOutput() {
                 </Link>
 
                 {/* Next Lesson Button */}
-                <Link href="/langroadmap/cpp/operators">
+                <Link href="/langroadmap/cpp/phase1/operators">
                     <motion.div
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.95 }}

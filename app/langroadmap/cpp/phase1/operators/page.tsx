@@ -684,7 +684,7 @@ export default function OperatorsLesson() {
 
         {/* Navigation Footer */}
         <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-neutral-800 pt-10">
-          <Link href="/langroadmap/cpp/io">
+          <Link href="/langroadmap/cpp/phase1/io">
             <motion.div whileHover={{ x: -5 }} whileTap={{ scale: 0.95 }} className="flex items-center gap-4 group cursor-pointer text-left">
               <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
                 <ChevronLeft className="w-5 h-5 text-red-500" />
@@ -696,7 +696,7 @@ export default function OperatorsLesson() {
             </motion.div>
           </Link>
 
-          <Link href="/langroadmap/cpp/control-flow">
+          <Link href="/langroadmap/cpp/phase1/control-flow">
             <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }} className="flex items-center gap-4 group cursor-pointer text-right">
               <div className="text-right">
                 <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Next Lesson</span>

@@ -209,7 +209,7 @@ export default function VariablesLesson() {
 
         {/* Next Lesson Button */}
         <div className="mt-20 flex justify-end border-t border-neutral-800 pt-10">
-          <Link href="/langroadmap/cpp/io">
+          <Link href="/langroadmap/cpp/phase1/io">
             <motion.div
               whileHover={{ x: 5 }}
               whileTap={{ scale: 0.95 }}
