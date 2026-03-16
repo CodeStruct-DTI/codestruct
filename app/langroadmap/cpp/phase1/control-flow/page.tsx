@@ -548,11 +548,11 @@ export default function ControlFlow() {
                     </motion.div>
                 </Link>
 
-                <Link href="/langroadmap/cpp/phase2">
+                <Link href="/langroadmap/cpp/phase2/functions">
                     <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }} className="flex items-center gap-4 group cursor-pointer text-right">
                     <div className="text-right">
                         <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-1">Next Lesson</span>
-                        <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">Phase-2 in C++</span>
+                        <span className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">Phase-2 Functions in C++</span>
                     </div>
                     <div className="w-12 h-12 rounded-full border border-neutral-700 flex items-center justify-center group-hover:border-red-500 transition-colors">
                         <ArrowRight className="w-5 h-5 text-red-500" />
