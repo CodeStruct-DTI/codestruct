@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowUp, ArrowRight, ArrowLeft, ChevronLeft } from "lucide-react";
+import { ArrowUp, ArrowRight, ArrowLeft, ChevronLeft, Code2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -60,7 +60,7 @@ export default function FunctionsLesson() {
           
           {/* 1. Function Definition */}
           <section>
-            <h2 className="text-3xl font-bold text-white mb-4 italic">1. Understanding Functions</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">1. Understanding Functions</h2>
             <p className="text-neutral-300 leading-8">
               In C++, a <strong>function</strong> is a self-contained block of code designed to perform a specific task. Instead of writing the same logic multiple times, you group that logic into a function and "call" it whenever needed. This approach makes your code reusable, easier to debug, and much more organized. Every execution in C++ starts from the <code>main()</code> function.
             </p>
@@ -88,6 +88,9 @@ export default function FunctionsLesson() {
                 </p>
                 <p className="text-neutral-300 text-sm leading-6">
                   <strong className="text-white">Parameters:</strong> Variables that act as placeholders for the data you pass into the function.
+                </p>
+                <p className="text-neutral-300 text-sm leading-6">
+                  <strong className="text-white">Function Body:</strong> The set of statements that perform the task.
                 </p>
               </div>
             </div>
@@ -119,9 +122,41 @@ export default function FunctionsLesson() {
             </div>
           </section>
 
-          {/* 4. Pass by Value vs. Pass by Reference */}
+          {/* 4. Types of Functions */}
+          <section>
+            <div className="flex items-center gap-3 mb-4">
+               <Code2 className="text-red-600 w-8 h-8" />
+               <h2 className="text-2xl font-bold text-white m-0">4. Types of Functions</h2>
+            </div>
+            <p className="text-neutral-300 mb-8">Functions are classified by how they handle inputs and outputs.</p>
+
+            <div className="space-y-8">
+              {/* Type 1 */}
+              <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
+                <h3 className="text-white text-xl font-bold mb-2">1. No Parameters</h3>
+                <p className="text-neutral-400 text-sm mb-4">Performs a predefined task without external input.</p>
+                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">void greet() &#123; <br/> &nbsp; cout &lt;&lt; "Hello!"; <br/> &#125;</code>
+              </div>
+
+              {/* Type 2 */}
+              <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
+                <h3 className="text-white text-xl font-bold mb-2">2. With Parameters</h3>
+                <p className="text-neutral-400 text-sm mb-4">Accepts input values to perform dynamic operations.</p>
+                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">void square(int n) &#123; <br/> &nbsp; cout &lt;&lt; n * n; <br/>  &#125;</code>
+              </div>
+
+              {/* Type 3 */}
+              <div className="p-6 bg-neutral-900/30 border border-neutral-800 rounded-2xl">
+                <h3 className="text-white text-xl font-bold mb-2">3. With Return Value</h3>
+                <p className="text-neutral-400 text-sm mb-4">Computes a result and sends it back to the caller using the <code>return</code> statement.</p>
+                <code className="text-blue-400 text-sm font-mono block bg-black p-3 rounded">int add(int a, int b) &#123;  <br/> &nbsp; return a + b; <br/>  &#125;</code>
+              </div>
+            </div>
+          </section>
+
+          {/* 5. Pass by Value vs. Pass by Reference */}
           <section className="space-y-10">
-            <h2 className="text-2xl font-semibold text-white">4. Passing Mechanisms</h2>
+            <h2 className="text-2xl font-semibold text-white">5. Passing Mechanisms</h2>
             
             {/* Pass by Value */}
             <div className="space-y-4">
