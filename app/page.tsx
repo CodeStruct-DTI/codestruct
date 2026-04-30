@@ -78,7 +78,7 @@ export default function LandingPage() { // Defines and exports the main componen
             icon={<Cpu className="text-red-500 w-10 h-10" />} // Passes a red CPU icon as a prop.
             title="DSA Patterns + Company Specific Questions" // Passes the card title.
             desc="Once you know the syntax, master the logic through core DSA patterns." // Passes the description text.
-            href="/dsa" // Sets the destination URL.
+            href="/dsa-sheet" // Sets the destination URL.
           />
           {/* Link to your newly created Unified Dashboard */}
           <FeatureCard // Custom card component for the Dashboard feature.
