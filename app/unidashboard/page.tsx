@@ -1,15 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Code2, ChevronLeft, Loader2, Trophy, User, AlertCircle } from "lucide-react"; // Added AlertCircle icon
-import styles from "../register/register.module.css"; 
+import { useRouter } from "next/navigation";
+import type { User } from "@supabase/supabase-js";
+import { AlertCircle, ChevronLeft, Code2, Loader2, LogOut, Trophy, User as UserIcon } from "lucide-react";
+import styles from "../register/register.module.css";
+import { createClient } from "@/lib/supabase/client";
+
+type ContestRanking = {
+  globalRanking?: number | null;
+  rating?: number | null;
+  attendedContestsCount?: number | null;
+};
+
+type DashboardResults = {
+  leetcode?: {
+    totalSolved?: number;
+    easySolved?: number;
+    mediumSolved?: number;
+    hardSolved?: number;
+    contestRanking?: ContestRanking | null;
+  } | null;
+  codeforces?: {
+    solvedCount?: number;
+    rating?: number;
+    rank?: string;
+    maxRating?: number;
+    maxRank?: string;
+    titlePhoto?: string;
+  } | null;
+};
 
 export default function DashboardPage() {
+  const router = useRouter();
+  const supabase = useMemo(() => createClient(), []);
   const [ids, setIds] = useState({ leetcode: "", codeforces: "" });
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<DashboardResults | null>(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState<string | null>(null); // New state for UI errors
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+  }, [supabase]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push("/login");
+    router.refresh();
+  };
 
   const handleStartTracking = async () => {
     // UI-friendly validation
@@ -47,9 +87,32 @@ export default function DashboardPage() {
         </div>
       </Link>
 
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="fixed right-8 top-8 z-50 flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-black uppercase tracking-widest text-red-400 transition hover:bg-red-500/20"
+      >
+        <LogOut className="h-4 w-4" />
+        Logout
+      </button>
+
+      <Link
+        href="/profile"
+        className="fixed right-36 top-8 z-50 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-widest text-neutral-300 transition hover:bg-white/10"
+      >
+        <UserIcon className="h-4 w-4" />
+        Profile
+      </Link>
+
       <div className="z-10 w-full max-w-6xl px-6 pt-32 pb-20">
         <div className="mb-12 border-l-4 border-red-600 pl-6">
           <h1 className="text-5xl font-black text-white tracking-tighter uppercase">Profile Tracker</h1>
+          {user?.email && (
+            <p className="mt-3 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-neutral-500">
+              <UserIcon className="h-4 w-4" />
+              Signed in as {user.email}
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -102,7 +165,7 @@ export default function DashboardPage() {
 }
 
 // Sub-components with explicit types to stop "val" errors
-function Card({ title, mainStat, subLabel, avatar, children }: { title: string, mainStat: any, subLabel: string, avatar?: string, children: React.ReactNode }) {
+function Card({ title, mainStat, subLabel, avatar, children }: { title: string, mainStat?: React.ReactNode, subLabel: string, avatar?: string, children: React.ReactNode }) {
   return (
     <div className="bg-neutral-900/50 p-8 rounded-3xl border border-white/5 backdrop-blur-md">
       <div className="flex justify-between items-start mb-8">
@@ -111,14 +174,14 @@ function Card({ title, mainStat, subLabel, avatar, children }: { title: string, 
           <p className="text-4xl text-white font-mono font-black">{mainStat ?? "—"}</p>
           <p className="text-neutral-500 text-[10px] uppercase font-mono tracking-widest">{subLabel}</p>
         </div>
-        {avatar ? <img src={avatar} className="w-14 h-14 rounded-xl border border-white/10" /> : <Trophy className="text-neutral-700 w-10 h-10" />}
+        {avatar ? <img src={avatar} alt={`${title} profile avatar`} className="w-14 h-14 rounded-xl border border-white/10" /> : <Trophy className="text-neutral-700 w-10 h-10" />}
       </div>
       {children}
     </div>
   );
 }
 
-function Stat({ label, val, color }: { label: string, val: any, color: string }) {
+function Stat({ label, val, color }: { label: string, val?: React.ReactNode, color: string }) {
   return (
     <div>
       <p className="text-[9px] uppercase text-neutral-600 font-black tracking-tighter mb-1">{label}</p>

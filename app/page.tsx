@@ -1,10 +1,41 @@
 "use client"; // Enables client-side features like Framer Motion and React hooks in Next.js.
 
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion"; // Imports the animation library for smooth transitions and hover effects.
 import Link from "next/link"; // Imports the Next.js component for fast, client-side navigation between pages.
-import { Terminal, Cpu, Code2, ArrowRight } from "lucide-react"; // Imports specialized SVG icons for the UI components.
+import { Terminal, Cpu, Code2, ArrowRight, LogOut, User } from "lucide-react"; // Imports specialized SVG icons for the UI components.
+import type { User as SupabaseUser } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LandingPage() { // Defines and exports the main component for the home page.
+  const router = useRouter();
+  const supabase = useMemo(() => createClient(), []);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+      setIsAuthLoading(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setIsAuthLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    router.refresh();
+  };
+
   return ( // Returns the JSX structure to be rendered in the browser.
     <div className="min-h-screen bg-black text-white selection:bg-red-500/30 overflow-x-hidden"> {/* Root wrapper: black background, white text, red highlight color, and prevents side-scrolling. */}
       {/* Background Ambient Glow */}
@@ -20,11 +51,30 @@ export default function LandingPage() { // Defines and exports the main componen
           >
             CODESTRUCT_ {/* The brand name text with a terminal-style underscore. */}
           </motion.div>
-          <div className="flex gap-8 items-center text-sm font-medium text-neutral-400"> {/* Container for nav links: greyish text, medium weight, and spaced apart. */}
-            <Link href="/login" className="hover:text-white transition-colors text-xs uppercase tracking-widest">Login</Link> {/* Link to login page: turns white on hover with a smooth transition. */}
-            <Link href="/register" className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-500 transition-all"> {/* Link to register: styled as a glowing red button with rounded corners. */}
-              Register {/* The button label text. */}
-            </Link>
+          <div className="flex gap-4 items-center text-sm font-medium text-neutral-400"> {/* Container for nav links: greyish text, medium weight, and spaced apart. */}
+            {!isAuthLoading && user ? (
+              <>
+                <Link href="/profile" className="flex items-center gap-2 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-500 transition-all">
+                  <User className="w-4 h-4" />
+                  Profile
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 hover:text-white transition-colors text-xs uppercase tracking-widest cursor-pointer"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="hover:text-white transition-colors text-xs uppercase tracking-widest">Login</Link> {/* Link to login page: turns white on hover with a smooth transition. */}
+                <Link href="/register" className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-500 transition-all"> {/* Link to register: styled as a glowing red button with rounded corners. */}
+                  Register {/* The button label text. */}
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       </header>
@@ -46,13 +96,13 @@ export default function LandingPage() { // Defines and exports the main componen
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center"> {/* Button container: stacks on mobile, side-by-side on larger screens. */}
-            <Link href="/register"> {/* Wraps the button in a link to the registration page. */}
+            <Link href={user ? "/unidashboard" : "/register"}> {/* Wraps the button in a link to the registration page. */}
               <motion.button // Animated button for the Call to Action.
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(220, 38, 38, 0.4)" }} // Hover effect: grows slightly and increases red glow intensity.
                 whileTap={{ scale: 0.95 }} // Click effect: shrinks slightly to feel like a physical press.
                 className="px-8 py-4 bg-red-600 rounded-xl font-bold text-lg flex items-center gap-2" // Button styling: large, red, rounded corners, uses Flexbox for icon alignment.
               >
-                Begin Your Journey <ArrowRight className="w-5 h-5" /> {/* Button text with a right-facing arrow icon. */}
+                {user ? "Open Dashboard" : "Begin Your Journey"} <ArrowRight className="w-5 h-5" /> {/* Button text with a right-facing arrow icon. */}
               </motion.button>
             </Link>
           </div>
