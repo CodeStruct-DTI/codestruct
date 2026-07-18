@@ -37,7 +37,7 @@ export default async function ProfilePage() {
         <div className="fixed top-8 left-8 z-50 flex items-center gap-2 cursor-pointer group">
           <ChevronLeft className="w-4 h-4 text-red-600" />
           <span className="text-xl font-black tracking-tighter text-red-600 uppercase">
-            Back to Dashboard
+            Back to Home Page
           </span>
         </div>
       </Link>
