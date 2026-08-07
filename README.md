@@ -39,7 +39,13 @@ npm install
 npm run dev
 ```
 
-### Make changes & commit
+FOR ME PERSONALLY(PRANAV)
+### BEFORE YOU MAKE CHANGES TO CODE(WHEN YOU OPEN ON VSC TO MAKE CHANGES):
+```bash
+git checkout main
+git pull origin main
+```
+### AFTER YOU MAKE CHANGES TO CODE:
 ```bash
 git pull
 git add .
