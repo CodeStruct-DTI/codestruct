@@ -25,8 +25,8 @@ export default function PythonRoadmap() {
       items: [
         { label: "Functions & Arguments", slug: "functions" },
         { label: "Recursion", slug: "recursion" },
-        { label: "Lists & Strings", slug: "lists-strings" },
-        { label: "References & Mutability", slug: "references-mutability" },
+        { label: "Lists & Tuples", slug: "lists-tuples" },
+        { label: "References & Memory Management", slug: "references-memory" },
       ],
     },
     {
