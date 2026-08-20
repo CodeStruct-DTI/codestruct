@@ -12,7 +12,7 @@ export default function PythonRoadmap() {
       phase: "phase1",
       icon: <Terminal className="w-6 h-6 text-red-500" />,
       items: [
-        { label: "Variables & Data Types (int, float, str, bool)", slug: "variables" },
+        { label: "Variables & Data Types", slug: "variables" },
         { label: "Input/Output (input(), print())", slug: "io" },
         { label: "Operators & Expressions", slug: "operators" },
         { label: "Control Flow (If/Else, Loops)", slug: "control-flow" },
@@ -34,9 +34,7 @@ export default function PythonRoadmap() {
       phase: "phase3",
       icon: <Zap className="w-6 h-6 text-red-500" />,
       items: [
-        { label: "Lists, Tuples & Iteration", slug: "lists-tuples" },
-        { label: "Dictionaries (dict)", slug: "dictionaries" },
-        { label: "Sets", slug: "sets" },
+        { label: "Dictionaries & Sets", slug: "dictionaries-sets" },
         { label: "Heap (heapq)", slug: "heap" },
         { label: "Stack & Queue (list, collections.deque)", slug: "stack-queue" },
         { label: "Sorting (sorted(), sort(), custom key)", slug: "sorting" },
