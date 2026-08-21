@@ -49,6 +49,7 @@ export default function PythonRoadmap() {
         { label: "Exception Handling", slug: "exception-handling" },
         { label: "List Comprehensions & Lambda", slug: "comprehensions-lambda" },
         { label: "File Handling (open, read, write)", slug: "file-handling" },
+        { label: "Decorators & Generators", slug: "decorators-generators" },
       ],
     },
   ];
