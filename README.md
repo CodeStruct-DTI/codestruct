@@ -3,7 +3,7 @@
 Welcome to **CodeStruct**, a high-performance, neon-noir themed platform designed to streamline your Data Structures and Algorithms journey. 
 
 ## 🔴 The Vision
-CodeStruct isn't just a tracker; it's a centralized command center for developers to master patterns, track live performance across platforms (LeetCode/Codeforces/Codechef), and access deep-dive conceptual articles.
+CodeStruct isn't just a tracker; it's a centralized command center for developers to master patterns, track live performance across platforms (LeetCode/Codeforces), and access deep-dive conceptual articles.
 
 ---
 
