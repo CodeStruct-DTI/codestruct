@@ -17,7 +17,7 @@ CodeStruct isn't just a tracker; it's a centralized command center for developer
 ---
 
 ## 🏛 The Three Pillars
-1.  **Unified Dashboard:** Live performance tracking and LeetCode, Codeforces, Codechef stat integration.
+1.  **Unified Dashboard:** Live performance tracking and LeetCode, Codeforces stat integration.
 2.  **Pattern Roadmaps:** Structured paths focusing on DSA patterns (Sliding Window, Two Pointers, etc.).
 3.  **Language Roadmaps:** Deep-dives into language syntaxes for C++, Java and Python
 
