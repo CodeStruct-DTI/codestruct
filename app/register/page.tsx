@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronLeft, Lock, Mail, User, UserPlus } from "lucide-react";
+import { ArrowRight, ChevronLeft, Lock, Mail, User, UserPlus, Code, Trophy } from "lucide-react";
 import styles from "./register.module.css";
 import { createClient } from "@/lib/supabase/client";
 
@@ -14,6 +14,8 @@ export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [leetcodeHandle, setLeetcodeHandle] = useState("");
+  const [codeforcesHandle, setCodeforcesHandle] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,9 +37,11 @@ export default function RegisterPage() {
       email,
       password,
       options: {
-          emailRedirectTo: `${window.location.origin}/`,
+        emailRedirectTo: `${window.location.origin}/`,
         data: {
           username: cleanUsername,
+          leetcode_handle: leetcodeHandle.trim() || null,
+          codeforces_handle: codeforcesHandle.trim() || null,
         },
       },
     });
@@ -145,6 +149,34 @@ export default function RegisterPage() {
                   onChange={(event) => setPassword(event.target.value)}
                   minLength={6}
                   required
+                />
+              </motion.div>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>LeetCode Username (Optional)</label>
+              <motion.div whileTap={{ scale: 0.99 }} className={styles.inputWrapper}>
+                <Code className="absolute left-3 top-3 text-neutral-600 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="leetcode_id"
+                  className={styles.inputField}
+                  value={leetcodeHandle}
+                  onChange={(event) => setLeetcodeHandle(event.target.value)}
+                />
+              </motion.div>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Codeforces Handle (Optional)</label>
+              <motion.div whileTap={{ scale: 0.99 }} className={styles.inputWrapper}>
+                <Trophy className="absolute left-3 top-3 text-neutral-600 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="tourist"
+                  className={styles.inputField}
+                  value={codeforcesHandle}
+                  onChange={(event) => setCodeforcesHandle(event.target.value)}
                 />
               </motion.div>
             </div>
