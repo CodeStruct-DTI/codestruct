@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -8,10 +8,11 @@ import { ArrowRight, ChevronLeft, Lock, LogIn, UserRound } from "lucide-react";
 import styles from "../register/register.module.css";
 import { createClient } from "@/lib/supabase/client";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createClient();
+  
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -56,6 +57,64 @@ export default function LoginPage() {
   };
 
   return (
+    <form onSubmit={handleLogin}>
+      <div className={styles.inputGroup}>
+        <label className={styles.label}>Email or Username</label>
+        <motion.div whileTap={{ scale: 0.99 }} className={styles.inputWrapper}>
+          <UserRound className="absolute left-3 top-3 text-neutral-600 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="master@codestruct.com or pranav_codes"
+            className={styles.inputField}
+            value={identifier}
+            onChange={(event) => setIdentifier(event.target.value)}
+            required
+          />
+        </motion.div>
+      </div>
+
+      <div className={styles.inputGroup}>
+        <label className={styles.label}>Password</label>
+        <motion.div whileTap={{ scale: 0.99 }} className={styles.inputWrapper}>
+          <Lock className="absolute left-3 top-3 text-neutral-600 w-5 h-5" />
+          <input
+            type="password"
+            placeholder="********"
+            className={styles.inputField}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            minLength={6}
+            required
+          />
+        </motion.div>
+      </div>
+
+      {error && (
+        <p className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm font-bold text-red-400">
+          {error}
+        </p>
+      )}
+
+      <motion.button
+        type="submit"
+        disabled={isSubmitting}
+        whileHover={{
+          scale: 1.02,
+          backgroundColor: "#ef4444",
+          boxShadow: "0 0 25px rgba(220, 38, 38, 0.6)",
+        }}
+        whileTap={{ scale: 0.98 }}
+        className={styles.submitBtn}
+      >
+        {isSubmitting ? "Signing in..." : "Continue Your Journey"}{" "}
+        <ArrowRight className="w-4 h-4" />
+      </motion.button>
+    </form>
+  );
+}
+
+export default function LoginPage() {
+  return (
     <div className={styles.container}>
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -97,59 +156,9 @@ export default function LoginPage() {
             <h2 className={styles.title}>Login to Account</h2>
           </div>
 
-          <form onSubmit={handleLogin}>
-            <div className={styles.inputGroup}>
-              <label className={styles.label}>Email or Username</label>
-              <motion.div whileTap={{ scale: 0.99 }} className={styles.inputWrapper}>
-                <UserRound className="absolute left-3 top-3 text-neutral-600 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="master@codestruct.com or pranav_codes"
-                  className={styles.inputField}
-                  value={identifier}
-                  onChange={(event) => setIdentifier(event.target.value)}
-                  required
-                />
-              </motion.div>
-            </div>
-
-            <div className={styles.inputGroup}>
-              <label className={styles.label}>Password</label>
-              <motion.div whileTap={{ scale: 0.99 }} className={styles.inputWrapper}>
-                <Lock className="absolute left-3 top-3 text-neutral-600 w-5 h-5" />
-                <input
-                  type="password"
-                  placeholder="********"
-                  className={styles.inputField}
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  minLength={6}
-                  required
-                />
-              </motion.div>
-            </div>
-
-            {error && (
-              <p className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm font-bold text-red-400">
-                {error}
-              </p>
-            )}
-
-            <motion.button
-              type="submit"
-              disabled={isSubmitting}
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "#ef4444",
-                boxShadow: "0 0 25px rgba(220, 38, 38, 0.6)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              className={styles.submitBtn}
-            >
-              {isSubmitting ? "Signing in..." : "Continue Your Journey"}{" "}
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </form>
+          <Suspense fallback={<div className="text-center py-4 font-mono text-xs text-neutral-500">Loading form...</div>}>
+            <LoginForm />
+          </Suspense>
 
           <p className="text-center mt-6 text-neutral-500 text-sm">
             New Here?{" "}
