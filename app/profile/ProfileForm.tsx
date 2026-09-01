@@ -132,7 +132,7 @@ export default function ProfileForm({ user, initialProfile }: ProfileProps) {
     <div className="relative min-h-screen bg-black text-white selection:bg-red-500/30 font-sans flex flex-col justify-center items-center p-6 py-16">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.12)_0%,transparent_70%)] pointer-events-none" />
 
-      <Link href="/unidashboard" className="fixed top-8 left-8 z-50">
+      <Link href="/" className="fixed top-8 left-8 z-50">
         <button className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors text-xs font-mono uppercase tracking-widest group">
           <ArrowLeft className="w-4 h-4 text-red-500 group-hover:-translate-x-1 transition-transform" />
           Back to Dashboard
